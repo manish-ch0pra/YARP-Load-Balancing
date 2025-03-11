@@ -1,13 +1,12 @@
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+builder.Services.AddReverseProxy()
+    .LoadFromConfig(builder.Configuration.GetSection("YARP"));
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-
-app.UseHttpsRedirection();
-
 app.MapGet("/api", () => Results.Ok("Hello from YARP"));
+
+app.MapReverseProxy();
 
 app.Run();
