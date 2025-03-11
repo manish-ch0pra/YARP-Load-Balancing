@@ -1,0 +1,6 @@
+@YARP_LB_HostAddress = http://localhost:5263
+
+GET {{YARP_LB_HostAddress}}/api/
+Accept: application/json
+
+###
